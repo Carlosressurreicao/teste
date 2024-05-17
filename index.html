@@ -1,0 +1,61 @@
+<!DOCTYPE html>   
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Your Doctor</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Jacques+Francois%7COooh+Baby%7COpen+Sans:700%7CQuattrocento&amp;display=swap"
+      media="all" />
+    <link
+      rel="stylesheet"
+      href="https://back.ww-cdn.com/assets/css/gbfonts.min.css"
+      id="gbicons" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Find Your Doctor</h1>
+      <div class="search-container">
+        <label for="codigoBusca"></label>
+        <input type="text" id="codigoBusca" name="codigoBusca" />
+        <button onclick="buscarMedico()">Search</button>
+      </div>
+      <div class="result-container" id="resultado"></div>
+    </div>
+
+    <script>
+      const medicos = [
+        {
+          codigo: "BR55001",
+          nome: "Dr. Fernando M. Aarestrup",
+          link: "https://www.allergyvax.com/",
+        },
+        {
+          codigo: "2",
+          nome: "Dra. Maria Oliveira",
+          link: "https://maria.allergyvax.com/",
+        },
+        {
+          codigo: "3",
+          nome: "Dr. Pedro Sousa",
+          link: "https://pedro.allergyvax.com/",
+        },
+      ];
+
+      function buscarMedico() {
+        const codigoBusca = document.getElementById('codigoBusca').value;
+        const resultadoDiv = document.getElementById('resultado');
+		
+        const medico = medicos.find(m => m.codigo === codigoBusca);
+
+        if (medico) {
+          resultadoDiv.innerHTML = `<p><a href="${medico.link}">${medico.nome}</a></p>`;
+        } else {
+          resultadoDiv.innerHTML = "<p>Doctor not found.</p>";
+        }
+      }
+    </script>
+  </body>
+</html>
